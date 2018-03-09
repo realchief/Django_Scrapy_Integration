@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth import forms as auth_forms
 
+
 invalid_error = 'User with this {} already exists.'
 
 
@@ -14,3 +15,9 @@ class LoginForm(auth_forms.AuthenticationForm):
                                                                  'required': 'True',
                                                                  'placeholder': 'Password...'}))
     next_ = forms.CharField(widget=forms.HiddenInput())
+
+
+class DocumentForm(forms.Form):
+    docfile = forms.FileField(
+        label='Select a file'
+    )
