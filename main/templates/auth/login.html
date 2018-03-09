@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}Login{% endblock %}
+
+{% block additional_styles %}
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="section" style=" background-image: url({% static 'img/background.png' %}); background-position: top center; min-height: 700px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="card card-signup">
+                        <form class="form login-form" role="form" method="post" action="{% url 'main:login' %}">
+
+                            {% csrf_token %}
+
+                            <div class="header header-info text-center">
+                                <h4>LOGIN</h4>
+                                <div class="social-line">
+                                    <a href="https://www.facebook.com/openalpr" class="btn btn-simple btn-just-icon">
+                                        <i class="fa fa-facebook-square"></i>
+                                    </a>
+                                    <a href="https://twitter.com/openalpr" class="btn btn-simple btn-just-icon">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                    <a href="https://www.linkedin.com/company/10472650/" class="btn btn-simple btn-just-icon">
+                                        <i class="fa fa-linkedin"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <p class="text-divider">Please provide your e-mail and password to login.</p>
+
+                            {% if form.errors %}
+                                {% for field in form %}
+                                    {% for error in field.errors %}
+                                        <p class="text-divider">
+                                            <div class="alert alert-danger">
+                                                <div class="container-fluid">
+                                                    <div class="alert-icon">
+                                                        <i class="material-icons">error_outline</i>
+                                                    </div>
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                        <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                                    </button>
+                                                    <b>Error:</b> {{ error|escape }}
+                                                </div>
+                                            </div>
+                                        </p>
+                                    {% endfor %}
+                                {% endfor %}
+                                {% for error in form.non_field_errors %}
+                                    <p class="text-divider">
+                                        <div class="alert alert-danger">
+                                            <div class="container-fluid">
+                                                <div class="alert-icon">
+                                                    <i class="material-icons">error_outline</i>
+                                                </div>
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                                </button>
+                                                <b>Error:</b> {{ error|escape }}
+                                            </div>
+                                        </div>
+                                    </p>
+                                {% endfor %}
+                            {% endif %}
+
+                            <div class="content">
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">face</i>
+                                            </span>
+                                            {% for error in form.username.errors %}
+                                                <div class="alert alert-danger">
+                                                    <strong>{{ error|escape }}</strong>
+                                                </div>
+                                            {% endfor %}
+                                            {% render_field form.username tabindex="1" id="username" %}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">lock</i>
+                                            </span>
+                                            {% for error in form.password.errors %}
+                                                <div class="alert alert-danger">
+                                                    <strong>{{ error|escape }}</strong>
+                                                </div>
+                                            {% endfor %}
+                                            {% render_field form.password tabindex="2" id="password" %}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {% render_field form.next_ %}
+
+                            </div>
+
+
+                            <div class="footer text-center">
+                                <button type="submit" name="login" id="login-submit" tabindex="4" class="btn btn-primary" value="Log In" style="margin-top: 50px; margin-bottom: 25px;">Login</button>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block additional_scripts %}
+
+{% endblock %}

@@ -21,7 +21,7 @@ if __name__ == "__main__":
             )
         raise
 
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "myproject.settings")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "ContainerUI.settings")
 
     from django.core.management import execute_from_command_line
 
