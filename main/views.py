@@ -55,7 +55,7 @@ def Upload(request):
             newdoc.save()
 
             # Redirect to the document list after POST
-            return HttpResponseRedirect(reverse('main:upload'))
+            return redirect('main:upload')
     else:
         form = DocumentForm()  # A empty, unbound form
 

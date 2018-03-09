@@ -67,7 +67,9 @@
                                     <div class="col-md-12">
                                         <div class="input-group">
                                             <span class="input-group-addon">
-                                                <i class="material-icons">email</i>
+                                                <i class="material-icons">file_upload</i>
+                                                <p>{{ form.non_field_errors }}</p>
+                                                <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
                                             </span>
                                         </div>
                                     </div>
@@ -77,8 +79,6 @@
                                     <div class="col-md-12">
                                         <div class="input-group">
                                             <span class="input-group-addon">
-                                                <p>{{ form.non_field_errors }}</p>
-                                                <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
                                                 <p>
                                                     {{ form.docfile.errors }}
                                                     {{ form.docfile }}
