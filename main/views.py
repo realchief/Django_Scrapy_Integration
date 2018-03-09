@@ -36,12 +36,6 @@ def logout(request):
     auth.logout(request)
     return redirect('main:login')
 
-# def Upload(request):
-#     if not request.user.is_authenticated():
-#         return redirect('main:login')
-#
-#     return render(request, 'pages/upload.html')
-
 
 def Upload(request):
     if not request.user.is_authenticated():
