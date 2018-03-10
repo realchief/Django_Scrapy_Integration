@@ -83,7 +83,8 @@ def Upload(request):
 # connect scrapyd service
 scrapyd = ScrapydAPI('http://localhost:6800')
 
-#
+
+
 def is_valid_url(url):
     validate = URLValidator()
     try:
