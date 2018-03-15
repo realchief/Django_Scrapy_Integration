@@ -84,7 +84,6 @@ def Upload(request):
 scrapyd = ScrapydAPI('http://localhost:6800')
 
 
-
 def is_valid_url(url):
     validate = URLValidator()
     try:
@@ -101,13 +100,15 @@ def crawl(request):
     # Post requests are for new crawling tasks
     if request.method == 'POST':
 
-        url = request.POST.get('http://localhost:8000/api/crawl/', None)
+        # url = request.POST.get('http://localhost:8000/api/crawl/')
+        #
+        # if not url:
+        #     return JsonResponse({'error': 'Missing  args'})
+        #
+        # if not is_valid_url(url):
+        #     return JsonResponse({'error': 'URL is invalid'})
 
-        if not url:
-            return JsonResponse({'error': 'Missing  args'})
-
-        if not is_valid_url(url):
-            return JsonResponse({'error': 'URL is invalid'})
+        url = 'http://localhost:8000/api/crawl'
 
         domain = urlparse(url).netloc  # parse the url and extract the domain
         unique_id = str(uuid4())  # create a unique ID.
